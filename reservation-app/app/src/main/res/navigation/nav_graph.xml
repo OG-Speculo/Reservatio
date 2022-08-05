@@ -10,4 +10,9 @@
         android:name="com.speculo.reservatio.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" />
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.speculo.reservatio.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" />
 </navigation>
