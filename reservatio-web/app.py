@@ -96,5 +96,19 @@ def getdata2():
     return redirect(url_for('user'))
 
 
+@app.route("/registered-stores", methods=["POST", "GET"])
+def registered_stores():
+    stores = list()
+    url = ""
+    store = ""
+    for i in db.get().each():
+        stores.append(i.key())
+    if request.method == "POST":
+        store = request.form['store']
+        url = pyqrcode.create(store)
+        url = url.png_as_base64_str(scale=5)
+    return render_template("registered_stores.html", stores=stores, length=len(stores), url=url, store_name=store)
+
+
 if __name__ == "__main__":
     app.run()
