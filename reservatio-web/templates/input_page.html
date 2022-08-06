@@ -60,6 +60,9 @@
 						<a class="nav-link" href="{{ url_for('user') }}">Services </a>
 					  </li>
 					  <li class="nav-item">
+						<a class="nav-link" href="{{ url_for('registered_stores') }}">Registered Stores</a>
+					  </li>
+					  <li class="nav-item">
 						<a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
 					  </li>
 					  
@@ -87,7 +90,8 @@
 					  </h1>
 					  <form id = "input" action="{{ url_for('input_page') }}" method="POST">
 					<div class="form-group col-md-6">
-						<input type="text" class="form-control" name="name" id="inputName4"/>
+						<input type="text" class="form-control" name="name" id="inputName4">
+						<p style="color: red;">{{ error }}</p>
 					  </div>
 					  
 					  <div class="btn-box">
