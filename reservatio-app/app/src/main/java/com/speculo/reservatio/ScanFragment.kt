@@ -1,5 +1,6 @@
 package com.speculo.reservatio
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,13 @@ class ScanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val inQueue = sharedPref.getBoolean("inQueue", false)
+
+        if(inQueue){
+            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, QueueFragment())?.commit()
+        }
 
         binding.apply {
             scanBTN.setOnClickListener{
