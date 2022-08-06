@@ -16,4 +16,14 @@ class ScanFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_scan, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            scanBTN.setOnClickListener{
+                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CameraFragment())?.commit()
+            }
+        }
+    }
 }

@@ -19,4 +19,14 @@ class SignupFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            submitBTN.setOnClickListener {
+                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, ScanFragment())?.commit()
+            }
+        }
+    }
 }
