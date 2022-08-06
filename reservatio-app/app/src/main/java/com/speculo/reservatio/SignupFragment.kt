@@ -1,5 +1,6 @@
 package com.speculo.reservatio
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,9 +24,24 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val flag = sharedPref.getString("name", null)
+        if(flag != null){
+            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, ScanFragment())?.commit()
+        }
+
         binding.apply {
             submitBTN.setOnClickListener {
-                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, ScanFragment())?.commit()
+                if(nameET.text.toString().trim() != ""){
+                    with(sharedPref.edit()){
+                        putString("name", nameET.text.toString())
+                        apply()
+                    }
+
+                    fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, ScanFragment())?.commit()
+                } else {
+                    errorTV.visibility = View.VISIBLE
+                }
             }
         }
     }
