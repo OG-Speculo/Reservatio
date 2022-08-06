@@ -19,4 +19,9 @@ Anyone having a smart phone with a camera can use it!
 
 # 💬 Objective
 
-To help people simplify their process in every sector by not having to wait for hours in the queue. 
+To help people simplify their process in every sector by not having to wait for hours in the queue.
+
+# Product Links
+app - https://github.com/OG-Speculo/Reservatio/releases/download/V1.0/app-release.apk
+
+web - http://reservatio.pythonanywhere.com/
